@@ -1,0 +1,9 @@
+<h2>Lista de Películas</h2>
+<ul>
+    {% for pelicula in peliculas %}
+        <li>{{ pelicula.nombre }} - {{ pelicula.genero }} - {{ pelicula.director }}</li>
+    {% empty %}
+        <li>No hay películas registradas.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'registrar_pelicula' %}">Registrar nueva película</a>
