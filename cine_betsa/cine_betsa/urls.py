@@ -20,6 +20,7 @@ from peliculas import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.home, name='home'),
     path('registro/', views.registrar_usuario, name='registrar_usuario'),
     path('Login/', views.login_usuario, name='Login'),
     path('peliculas/', views.lista_peliculas, name='listaspeliculas'),

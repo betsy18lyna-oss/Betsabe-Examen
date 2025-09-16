@@ -5,6 +5,11 @@ from django.contrib.auth.decorators import login_required
 from .forms import RegistrarUsuarioForm, PeliculaForm
 from .models import Pelicula
 
+from django.shortcuts import render
+
+def home(request):
+    return render(request, 'home.html')
+
 def registrar_usuario(request):
     if request.method == 'POST':
         form = RegistrarUsuarioForm(request.POST)
