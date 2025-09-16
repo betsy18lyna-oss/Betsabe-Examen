@@ -1,7 +1,14 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
-from cine_betsa.peliculas.models import Pelicula
+from .models import Pelicula
+from django import forms
+
+class PeliculaForm(forms.ModelForm):
+    class Meta:
+        model = Pelicula
+        fields = ['nombre', 'genero', 'director', 'anio']
+
 
 class RegistrarUsuarioForm(UserCreationForm):
     email = forms.EmailField()

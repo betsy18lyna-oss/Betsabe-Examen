@@ -1,10 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 from .forms import RegistrarUsuarioForm, PeliculaForm
 from .models import Pelicula
-from django.contrib.auth.decorators import login_required
-
 
 def registrar_usuario(request):
     if request.method == 'POST':
@@ -12,7 +11,7 @@ def registrar_usuario(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('listaspeliculas')
+            return redirect('listaspeliculas')  
     else:
         form = RegistrarUsuarioForm()
     return render(request, 'registrar.html', {'form': form})
@@ -40,7 +39,6 @@ def registrar_pelicula(request):
     else:
         form = PeliculaForm()
     return render(request, 'registrar_pelicula.html', {'form': form})
-
 
 @login_required
 def lista_peliculas(request):
