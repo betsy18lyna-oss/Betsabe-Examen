@@ -4,6 +4,7 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from .forms import RegistrarUsuarioForm, PeliculaForm
 from .models import Pelicula
+from django.contrib.auth.forms import UserCreationForm
 
 from django.shortcuts import render
 
@@ -19,7 +20,7 @@ def registrar_usuario(request):
             return redirect('listaspeliculas')  
     else:
         form = RegistrarUsuarioForm()
-    return render(request, 'registrar.html', {'form': form})
+        return render(request, 'registro.html', {'form': form})
 
 
 def login_usuario(request):
